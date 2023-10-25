@@ -1,3 +1,4 @@
+
 package br.com.pdv.entidade;
 
 import java.io.Serializable;
