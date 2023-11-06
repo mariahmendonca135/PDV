@@ -2,15 +2,26 @@ package br.com.pdv.controller;
 
 import javax.swing.Spring;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+import br.com.pdv.repository.LojaRepository;
+
+	@Controller
 
 public class lojacontroller {
-	@GetMapping({"/lojas"})
-	public String home(String usename){
+	//criar uma instancia do nosso repositorio	
+	@Autowired
+	private LojaRepository lojaRepository;
 	
-		return "lojas";
+	@GetMapping({"/lojas"})//e o nome que eu  quiser colocar 
+	public String home(ModelMap  model){
+		
+		model.addAttribute("loja", lojaRepository.findAll());
+			
+		return "loja/loja";
 	}
 }
